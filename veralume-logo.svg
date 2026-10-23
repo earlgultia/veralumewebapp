@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="tile" x1="66" y1="30" x2="437" y2="488" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#286BCC"/>
+      <stop offset=".48" stop-color="#0A347C"/>
+      <stop offset="1" stop-color="#061C4C"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="64" y1="236" x2="445" y2="252" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD77A"/>
+      <stop offset=".3" stop-color="#F7F7FF"/>
+      <stop offset=".68" stop-color="#64D9FF"/>
+      <stop offset="1" stop-color="#DDF8FF"/>
+    </linearGradient>
+    <linearGradient id="book" x1="137" y1="260" x2="374" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE19A"/>
+      <stop offset=".46" stop-color="#F7FBFF"/>
+      <stop offset="1" stop-color="#38C9FF"/>
+    </linearGradient>
+    <linearGradient id="cross" x1="223" y1="129" x2="289" y2="216" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8DB"/>
+      <stop offset="1" stop-color="#FFC766"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="28" y="28" width="456" height="456" rx="112" fill="url(#tile)"/>
+  <rect x="34" y="34" width="444" height="444" rx="106" stroke="url(#edge)" stroke-width="7"/>
+  <path d="M77 206 229 96c16-12 28-12 44 0l162 117c15 11 4 29-12 22l-151-99c-15-10-29-10-44 0L91 226c-18 11-31-7-14-20Z" fill="#49B9FF" fill-opacity=".36" stroke="#DDF8FF" stroke-width="6"/>
+  <path d="M256 139v76m-34-42h68" stroke="#FFCB6C" stroke-width="28" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M256 139v76m-34-42h68" stroke="url(#cross)" stroke-width="17" stroke-linecap="round"/>
+  <path d="M85 245c60-13 119 10 171 72 53-62 111-85 171-72-45 15-78 52-112 110-21 36-40 62-59 62s-38-26-59-62c-34-58-67-95-112-110Z" fill="#1F8FE0" fill-opacity=".35" stroke="url(#book)" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M121 238c55 5 99 30 135 79 36-49 80-74 135-79-49 25-83 57-110 102-9 15-17 25-25 25s-16-10-25-25c-27-45-61-77-110-102Z" fill="#F2F8FF" fill-opacity=".22" stroke="#EDF8FF" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M256 317v72" stroke="#FFE6B0" stroke-opacity=".86" stroke-width="4"/>
+  <path d="M58 115c69-46 145-66 228-61" stroke="#FFF" stroke-opacity=".38" stroke-width="8" stroke-linecap="round"/>
+  <path d="M320 51c82 14 134 63 153 133" stroke="#8BEAFF" stroke-opacity=".7" stroke-width="6" stroke-linecap="round"/>
+</svg>
