@@ -13,6 +13,30 @@ const featureContent = {
   }
 };
 
+const welcomeVideoDialog = document.querySelector("#welcome-video-dialog");
+const welcomeVideoPlayer = document.querySelector("#welcome-video-player");
+const welcomeVideoClose = document.querySelector(".welcome-video-close");
+const welcomeVideoSkip = document.querySelector(".welcome-video-skip");
+
+if (welcomeVideoDialog && welcomeVideoPlayer && welcomeVideoClose && welcomeVideoSkip) {
+  const closeWelcomeVideo = () => {
+    welcomeVideoPlayer.pause();
+    welcomeVideoDialog.close();
+  };
+
+  welcomeVideoClose.addEventListener("click", closeWelcomeVideo);
+  welcomeVideoSkip.addEventListener("click", closeWelcomeVideo);
+  welcomeVideoDialog.addEventListener("close", () => welcomeVideoPlayer.pause());
+
+  if (typeof welcomeVideoDialog.showModal === "function") {
+    welcomeVideoDialog.showModal();
+    welcomeVideoSkip.focus();
+    welcomeVideoPlayer.play().catch(() => {
+      // Autoplay can be blocked by browser settings; playback controls remain available.
+    });
+  }
+}
+
 const featureTabs = [...document.querySelectorAll(".feature-tab")];
 const featurePanel = document.querySelector("#feature-panel");
 
