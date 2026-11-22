@@ -17,8 +17,10 @@ const welcomeVideoDialog = document.querySelector("#welcome-video-dialog");
 const welcomeVideoPlayer = document.querySelector("#welcome-video-player");
 const welcomeVideoClose = document.querySelector(".welcome-video-close");
 const welcomeVideoSkip = document.querySelector(".welcome-video-skip");
+const welcomeVideoAudio = document.querySelector("#welcome-video-audio");
+const welcomeVideoStatus = document.querySelector("#welcome-video-status");
 
-if (welcomeVideoDialog && welcomeVideoPlayer && welcomeVideoClose && welcomeVideoSkip) {
+if (welcomeVideoDialog && welcomeVideoPlayer && welcomeVideoClose && welcomeVideoSkip && welcomeVideoAudio && welcomeVideoStatus) {
   const closeWelcomeVideo = () => {
     welcomeVideoPlayer.pause();
     welcomeVideoDialog.close();
@@ -26,13 +28,24 @@ if (welcomeVideoDialog && welcomeVideoPlayer && welcomeVideoClose && welcomeVide
 
   welcomeVideoClose.addEventListener("click", closeWelcomeVideo);
   welcomeVideoSkip.addEventListener("click", closeWelcomeVideo);
+  welcomeVideoAudio.addEventListener("click", () => {
+    welcomeVideoPlayer.muted = false;
+    welcomeVideoPlayer.play().then(() => {
+      welcomeVideoAudio.hidden = true;
+      welcomeVideoStatus.textContent = "Sound on";
+    }).catch(() => {
+      welcomeVideoStatus.textContent = "Use the video controls to start playback";
+    });
+  });
   welcomeVideoDialog.addEventListener("close", () => welcomeVideoPlayer.pause());
 
   if (typeof welcomeVideoDialog.showModal === "function") {
     welcomeVideoDialog.showModal();
     welcomeVideoSkip.focus();
+    welcomeVideoPlayer.muted = false;
     welcomeVideoPlayer.play().catch(() => {
-      // Autoplay can be blocked by browser settings; playback controls remain available.
+      welcomeVideoAudio.hidden = false;
+      welcomeVideoStatus.textContent = "Your browser requires a tap to play audio";
     });
   }
 }

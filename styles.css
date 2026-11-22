@@ -259,9 +259,10 @@ h1 em, h2 em, blockquote em { color: #b47a2e; }
 .welcome-video-close { width: 40px; height: 40px; flex: 0 0 auto; align-self: flex-start; display: grid; place-items: center; border: 1px solid rgba(116,72,67,.16); border-radius: 50%; background: rgba(255,255,255,.72); color: #4a2d37; font-size: 25px; line-height: 1; cursor: pointer; }
 .welcome-video-player { display: block; width: 100%; max-height: min(68vh, 620px); aspect-ratio: 16 / 9; border-radius: 14px; background: #111; object-fit: contain; }
 .welcome-video-footer { padding-top: 16px; color: #8e6e68; font-size: 11px; }
+.welcome-video-audio { padding: 10px 13px; border: 1px solid rgba(116,72,67,.2); border-radius: 999px; background: #fff; color: #5d3843; font: 600 11px var(--body); cursor: pointer; }
 .welcome-video-skip { padding: 11px 15px; border: 0; border-radius: 999px; background: #5d3843; color: #fff8f1; font: 600 11px var(--body); cursor: pointer; }
 .welcome-video-skip span { padding-left: 7px; color: #f0c879; }
-.welcome-video-close:focus-visible, .welcome-video-skip:focus-visible { outline: 2px solid #b47a2e; outline-offset: 3px; }
+.welcome-video-close:focus-visible, .welcome-video-audio:focus-visible, .welcome-video-skip:focus-visible { outline: 2px solid #b47a2e; outline-offset: 3px; }
 @keyframes welcome-video-in { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 .support-section { padding: 105px 0; background: linear-gradient(135deg, #e9f5ff, #f4f9ff 58%, #e2f2ff); }
 .support-inner { display: grid; grid-template-columns: 1fr .78fr; align-items: center; gap: 12%; }
