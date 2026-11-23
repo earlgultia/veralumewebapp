@@ -265,6 +265,13 @@ h1 em, h2 em, blockquote em { color: #b47a2e; }
 .welcome-video-close:focus-visible, .welcome-video-audio:focus-visible, .welcome-video-skip:focus-visible { outline: 2px solid #b47a2e; outline-offset: 3px; }
 @keyframes welcome-video-in { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 .support-section { padding: 105px 0; background: linear-gradient(135deg, #e9f5ff, #f4f9ff 58%, #e2f2ff); }
+.beta-test-section { padding: 76px 0; background: linear-gradient(135deg, #f8e9df, #fff8f1 58%, #f4ddd3); text-align: center; }
+.beta-test-inner { display: flex; flex-direction: column; align-items: center; }
+.beta-test-inner h2 { margin: 16px 0 8px; font-size: clamp(32px, 4vw, 46px); }
+.beta-test-inner p { margin: 0; color: var(--muted-ink); font-size: 13px; line-height: 1.8; }
+.beta-test-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 13px 20px; border-radius: 999px; background: var(--forest); color: #fff8f1; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 180ms ease, transform 180ms ease; }
+.beta-test-link:hover { background: #67404b; transform: translateY(-2px); }
+.beta-test-link:focus-visible { outline: 2px solid #b47a2e; outline-offset: 4px; }
 .support-inner { display: grid; grid-template-columns: 1fr .78fr; align-items: center; gap: 12%; }
 .support-copy { max-width: 480px; }
 .support-copy h2 { margin: 22px 0 20px; font-size: 48px; line-height: 1.12; }
