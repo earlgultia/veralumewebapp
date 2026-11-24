@@ -394,7 +394,7 @@ h1 em, h2 em, blockquote em { color: #b47a2e; }
   .reveal { opacity: 1; transform: none; }
 }
 
-/* The 1.5.5 update uses a warmer, more welcoming visual language throughout. */
+/* Previous warm palette, retained as base styles beneath the current seasonal theme. */
 :root {
   --ink: #3a2630;
   --muted-ink: #765d5f;
@@ -544,3 +544,106 @@ h1 em, h2 em, blockquote em { color: #b47a2e; }
 @media (max-width: 620px) {
   .site-header { background: rgba(255, 248, 241, .98); }
 }
+
+/* Veralume 1.5.6 Living Word (Special Edition): a Christmas palette. */
+:root {
+  --ink: #18372e;
+  --muted-ink: #61766b;
+  --forest: #174b3b;
+  --moss: #a83f4b;
+  --mint: #e5eee7;
+  --pale: #f7f8f2;
+  --lime: #d9b66c;
+  --line: rgba(32, 76, 59, .17);
+  --glass: rgba(250, 250, 244, .72);
+}
+body { background: var(--pale); color: var(--ink); }
+.site-header, .site-header.scrolled { border-color: rgba(35, 76, 60, .14); background: rgba(247, 248, 242, .97); box-shadow: 0 1px 0 rgba(35, 76, 60, .08); }
+.brand, .header-cta { color: var(--forest); }
+.main-nav { color: #61766b; }
+.main-nav a:hover, .text-link:hover, .feature-link:hover, .back-to-top:hover { color: #a83f4b; }
+.header-cta { border-color: rgba(217, 182, 108, .75); background: var(--forest); color: #fffdf5; box-shadow: 0 8px 24px rgba(24, 55, 46, .16); }
+.header-cta:hover, .button-dark:hover { background: #23644b; }
+.header-cta span { color: #e7c979; }
+.hero { background: radial-gradient(ellipse at 76% 42%, rgba(255,255,255,.9) 0, rgba(231,241,231,.58) 34%, transparent 63%), linear-gradient(120deg, #f7f8f2, #e8f0e7 54%, #d9e8dc); }
+.hero::before { border-color: rgba(35, 93, 67, .14); box-shadow: 0 0 0 45px rgba(255,255,255,.3), 0 0 0 90px rgba(185,211,187,.16); }
+.eyebrow, .section-index { color: #537663; }
+.status-dot { background: #ba4c52; box-shadow: 0 0 0 4px rgba(186,76,82,.14); }
+h1 em, h2 em, blockquote em, .support-copy h2 em { color: #a83f4b; }
+.hero-description, .intro-main p, .feature-lead, .feature-panel p, .support-copy p { color: #61766b; }
+.platform-note, .text-link, .scroll-cue, .intro-signature { color: #718579; }
+.platform-android { color: #4b8058; }
+.note-divider { color: #bdcbbd; }
+.button-dark { background: var(--forest); }
+.image-wash { background: radial-gradient(ellipse at 35% 30%, rgba(238,207,133,.42), transparent 39%), radial-gradient(ellipse at 75% 68%, rgba(172,65,72,.3), transparent 36%), linear-gradient(145deg, #174b3b, #28644b 58%, #a83f4b); }
+.image-wash::after { background: linear-gradient(120deg, rgba(255,255,255,.12), rgba(14,48,37,.2)); }
+.phone-mockup { color: #18372e; background: linear-gradient(155deg, rgba(255,255,250,.98), rgba(231,240,230,.94)); }
+.phone-speaker { background: rgba(35, 76, 60, .25); }
+.app-greeting, .verse-kicker, .verse-reference { color: #66816e; }
+.verse-card { background: linear-gradient(135deg, #e0ebdf, #edf2e5); }
+.verse-card p { color: #244535; }
+.verse-flower { color: rgba(168,63,75,.2); }
+.reading-icon, .float-icon { background: #f1e5df; color: #a83f4b; }
+.reading-row small, .float-note small { color: #738578; }
+.app-bottom .bottom-active { color: #a83f4b; }
+.hero-label { color: #61766b; }
+.hero-label strong { color: #18372e; }
+.label-sun, .note-sparkle, .quote-mark { color: #b58d3d; }
+.hero-orbit { border-color: rgba(52, 107, 74, .17); }
+.scroll-cue span { background: #9db59f; }
+.tiny-rule, .signature-line { background: #b5c8b5; }
+.intro-side-note { color: #718579; }
+.intro-side-note strong { color: #174b3b; }
+.feature-section { background: linear-gradient(125deg, #e6efe5, #f0f2e8 62%, #f1e4df); }
+.beta-test-section { background: linear-gradient(135deg, #e8f0e6, #f7f8f2 58%, #f1e5df); }
+.release-item { border-color: rgba(255,255,255,.9); background: linear-gradient(135deg, rgba(251,251,246,.96), rgba(230,239,229,.88)); box-shadow: 0 16px 36px rgba(24,55,46,.08), inset 0 1px 0 rgba(255,255,255,.94); }
+.release-item:hover { border-color: rgba(186,76,82,.48); box-shadow: 0 22px 42px rgba(24,55,46,.13), inset 0 1px 0 #fff; }
+.release-item h3 { color: #18372e; }
+.release-item p { color: #61766b; }
+.feature-tabs { border-color: rgba(35, 76, 60, .18); }
+.feature-tab { color: #7d9184; }
+.feature-tab.is-active { color: #174b3b; }
+.feature-tab.is-active::after { background: #a83f4b; }
+.feature-panel h3 { color: #18372e; }
+.feature-symbol { border-color: rgba(168, 63, 75, .28); color: #a83f4b; }
+.feature-link { color: #35684d; }
+.feature-decoration { color: rgba(255,255,255,.48); }
+.quote-section, .site-footer { background: #fbfbf6; }
+.quote-reference, .footer-credit, .back-to-top { color: #718579; }
+.download-section { background: radial-gradient(ellipse at 88% 26%, #a83f4b 0, transparent 38%), linear-gradient(120deg, #123b30, #174b3b 67%, #28644b); }
+.download-copy .section-index { color: #c3d4c2; }
+.download-copy h2 em { color: #e7c979; }
+.download-copy p { color: #e0eade; }
+.button-light { background: #e7c979; color: #18372e; }
+.button-light:hover { background: #f1d995; }
+.download-meta, .download-glass small, .availability-item small { color: #c3d4c2; }
+.meta-dot { background: #ba4c52; }
+.ios-note, .availability-item .apple-icon { color: #f0eee4; }
+.coming-soon { border-color: rgba(255,255,255,.28); color: #e0eade; }
+.download-ring { border-color: rgba(231,201,121,.36); }
+.ring-two { border-color: rgba(255,255,255,.2); }
+.download-glass { border-color: rgba(231,201,121,.48); background: linear-gradient(145deg, rgba(231,201,121,.16), rgba(255,255,255,.06)); }
+.download-cross, .download-star { color: #e7c979; }
+.star-two { color: #d98a83; }
+.download-bottom { border-color: rgba(224,234,222,.2); color: #c3d4c2; }
+.support-section { background: linear-gradient(135deg, #e8f0e6, #f7f8f2 58%, #f1e5df); }
+.support-qr-panel { background: rgba(250, 250, 244, .72); }
+.qr-kicker { color: #537663; }
+.qr-open { border-color: rgba(35, 76, 60, .18); background: #fbfbf6; color: #61766b; }
+.qr-caption, .qr-dialog-caption { color: #718579; }
+.qr-dialog { background: #f7f8f2; }
+.qr-close { border-color: rgba(35, 76, 60, .16); color: #18372e; }
+.footer-credit strong { color: #174b3b; }
+.welcome-video-dialog, .update-video { border-color: rgba(255,255,255,.88); background: linear-gradient(135deg, #f8faf4, #e6efe5 58%, #f2e5e1); box-shadow: 0 16px 36px rgba(24, 55, 46, .1), inset 0 1px 0 rgba(255,255,255,.92); color: #18372e; }
+.welcome-video-kicker, .update-video-copy .section-index { color: #537663; }
+.update-video-copy h3, .welcome-video-dialog h2 { color: #18372e; }
+.update-video-copy p, .welcome-video-footer { color: #61766b; }
+.welcome-video-close, .welcome-video-audio { border-color: rgba(35,76,60,.16); background: #fff; color: #174b3b; }
+.welcome-video-skip { background: #174b3b; color: #fffdf5; }
+.welcome-video-skip span { color: #e7c979; }
+.welcome-video-close:focus-visible, .welcome-video-audio:focus-visible, .welcome-video-skip:focus-visible { outline-color: #a83f4b; }
+.hero-screen { box-shadow: 0 24px 60px rgba(24, 55, 46, .18); }
+.availability-item { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.07); }
+.availability-item strong { color: #fbfbf6; }
+.platform-item .android-icon, .availability-item .android-icon { color: #a9ca89; }
+@media (max-width: 620px) { .site-header, .site-header.scrolled { background: rgba(247, 248, 242, .98); } }
