@@ -500,3 +500,47 @@ h1 em, h2 em, blockquote em { color: #b47a2e; }
   .hero-art { height: auto; min-height: 0; max-height: none; padding: 12px 0; }
   .hero-screen { width: min(100%, 350px); max-height: min(72vh, 650px); }
 }
+
+/* Consistent platform marks and store availability callout. */
+.platform-note { gap: 12px; }
+.download-copy .availability-intro { margin: -12px 0 18px; color: #fff1e3; font-size: 11px; line-height: 1.65; }
+.platform-item { display: inline-flex; align-items: center; gap: 6px; }
+.platform-icon { display: block; width: 17px; height: 17px; fill: currentColor; }
+.platform-item .android-icon { color: #82a66b; }
+.platform-item .apple-icon { color: #66515a; }
+.platform-availability { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 430px; margin-top: 24px; }
+.availability-item { min-height: 66px; padding: 12px 14px; display: flex; align-items: center; gap: 11px; border: 1px solid rgba(255, 235, 220, .2); border-radius: 12px; background: rgba(255, 248, 241, .07); }
+.store-platform-icon { flex: 0 0 22px; width: 22px; height: 22px; fill: currentColor; }
+.availability-item .android-icon { color: #a9ca89; }
+.availability-item .apple-icon { color: #f3e7e1; }
+.availability-item span { display: grid; gap: 4px; }
+.availability-item strong { color: #fff8f1; font: 600 11px var(--display); }
+.availability-item small { color: #e0bda5; font-size: 9px; }
+@media (max-width: 620px) {
+  .platform-note { gap: 9px; font-size: 9px; }
+  .download-copy .availability-intro { margin-top: -8px; font-size: 10px; }
+  .platform-icon { width: 15px; height: 15px; }
+  .platform-availability { max-width: 360px; gap: 7px; margin-top: 20px; }
+  .availability-item { min-height: 62px; padding: 10px; gap: 8px; }
+  .store-platform-icon { flex-basis: 19px; width: 19px; height: 19px; }
+  .availability-item strong { font-size: 10px; }
+  .availability-item small { font-size: 8px; }
+}
+
+/* Keep scrolling compositing work light, especially on mobile GPUs. */
+.site-header {
+  background: rgba(255, 248, 241, .97);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.release-item,
+.glass-surface,
+.download-glass {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.reveal { transition-duration: 420ms; }
+.release-item { transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+@media (max-width: 620px) {
+  .site-header { background: rgba(255, 248, 241, .98); }
+}
