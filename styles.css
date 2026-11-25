@@ -265,6 +265,15 @@ h1 em, h2 em, blockquote em { color: #b47a2e; }
 .welcome-video-close:focus-visible, .welcome-video-audio:focus-visible, .welcome-video-skip:focus-visible { outline: 2px solid #b47a2e; outline-offset: 3px; }
 @keyframes welcome-video-in { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 .support-section { padding: 105px 0; background: linear-gradient(135deg, #e9f5ff, #f4f9ff 58%, #e2f2ff); }
+.feedback-section { padding: 96px 0; background: var(--pale); }
+.feedback-inner { display: grid; grid-template-columns: .72fr 1.28fr; align-items: start; gap: 8%; }
+.feedback-heading h2 { margin: 22px 0 0; font-size: 42px; line-height: 1.15; }
+.feedback-heading h2 em { color: var(--moss); }
+.feedback-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.feedback-card { min-height: 224px; padding: 22px 18px; display: flex; flex-direction: column; align-items: flex-start; border-color: var(--line); border-radius: 5px; color: var(--ink); }
+.feedback-quote-mark { height: 32px; color: var(--moss); font: 48px/1 Georgia, serif; }
+.feedback-card blockquote { flex: 1; margin: 11px 0 22px; font: 500 14px/1.75 var(--display); letter-spacing: 0; }
+.feedback-card cite { color: var(--muted-ink); font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: .5px; }
 .beta-test-section { padding: 76px 0; background: linear-gradient(135deg, #f8e9df, #fff8f1 58%, #f4ddd3); text-align: center; }
 .beta-test-inner { display: flex; flex-direction: column; align-items: center; }
 .beta-test-inner h2 { margin: 16px 0 8px; font-size: clamp(32px, 4vw, 46px); }
@@ -308,6 +317,7 @@ h1 em, h2 em, blockquote em { color: #b47a2e; }
   .feature-inner { gap: 7%; }
   .release-section { padding: 83px 0 90px; }
   .release-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .feedback-inner { grid-template-columns: 1fr; gap: 30px; }
   .support-section { padding: 83px 0; }
   .support-inner { grid-template-columns: 1fr .85fr; gap: 7%; }
   .support-copy h2 { font-size: 40px; }
@@ -359,6 +369,10 @@ h1 em, h2 em, blockquote em { color: #b47a2e; }
   .release-icon { width: 30px; height: 30px; margin-bottom: 13px; }
   .release-item h3 { padding-right: 34px; }
   .support-section { padding: 74px 0; }
+  .feedback-section { padding: 72px 0; }
+  .feedback-heading h2 { font-size: 37px; }
+  .feedback-grid { grid-template-columns: 1fr; }
+  .feedback-card { min-height: 190px; }
   .support-inner { grid-template-columns: 1fr; gap: 30px; }
   .support-copy h2 { font-size: 37px; }
   .support-copy p { font-size: 12px; }
