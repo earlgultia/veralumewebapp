@@ -122,3 +122,141 @@ if (donationQr && qrOpenButton && qrPlaceholder && qrDialog && qrDialogImage && 
     if (event.target === qrDialog) qrDialog.close();
   });
 }
+
+// Counts are stored in Supabase; a browser is counted once using a local marker.
+const statsConfig = {
+  url: "https://fteeurgkgeywlytmabwt.supabase.co",
+  key: "sb_publishable_osn77U7AB8qzngoM8RIBkg_pzTFkq4M"
+};
+const statsHeaders = {
+  apikey: statsConfig.key,
+  Authorization: `Bearer ${statsConfig.key}`,
+  "Content-Type": "application/json"
+};
+const visitorCount = document.querySelector("#visitor-count");
+const downloadCount = document.querySelector("#download-count");
+
+async function getSiteCounts() {
+  const response = await fetch(`${statsConfig.url}/rest/v1/site_counters?select=name,value`, {
+    headers: { apikey: statsConfig.key, Authorization: `Bearer ${statsConfig.key}` }
+  });
+  if (!response.ok) throw new Error("Could not load site counters");
+  const counts = await response.json();
+  for (const row of counts) {
+    const target = row.name === "visitors" ? visitorCount : row.name === "downloads" ? downloadCount : null;
+    if (target) target.textContent = Number(row.value).toLocaleString();
+  }
+}
+
+async function incrementSiteCounter(name) {
+  const response = await fetch(`${statsConfig.url}/rest/v1/rpc/increment_site_counter`, {
+    method: "POST",
+    headers: statsHeaders,
+    body: JSON.stringify({ counter_name: name }),
+    keepalive: true
+  });
+  if (!response.ok) throw new Error("Could not update site counter");
+}
+
+getSiteCounts().catch(() => {});
+try {
+  if (!localStorage.getItem("veralume-visitor-counted")) {
+    incrementSiteCounter("visitors").then(() => {
+      localStorage.setItem("veralume-visitor-counted", "1");
+      return getSiteCounts();
+    }).catch(() => {});
+  }
+} catch {
+  // Browsing in private or restricted storage mode still leaves the page usable.
+}
+
+document.querySelectorAll("[data-apk-download]").forEach((button) => {
+  button.addEventListener("click", () => {
+    incrementSiteCounter("downloads").then(getSiteCounts).catch(() => {});
+  });
+});
+
+// A small canvas layer keeps snowfall smooth without adding DOM nodes or blocking clicks.
+const snowCanvas = document.querySelector("#snowfall");
+const snowContext = snowCanvas?.getContext("2d", { alpha: true });
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (snowCanvas && snowContext && !prefersReducedMotion) {
+  const snowflakes = [];
+  let viewportWidth = 0;
+  let viewportHeight = 0;
+  let lastFrameTime = 0;
+  let animationFrame = 0;
+  const frameInterval = 1000 / 30;
+  const randomBetween = (min, max) => min + Math.random() * (max - min);
+
+  function resizeSnowfall() {
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
+    snowCanvas.width = Math.round(viewportWidth * pixelRatio);
+    snowCanvas.height = Math.round(viewportHeight * pixelRatio);
+    snowContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    snowContext.clearRect(0, 0, viewportWidth, viewportHeight);
+
+    const targetCount = viewportWidth < 620 ? 18 : 34;
+    while (snowflakes.length < targetCount) {
+      snowflakes.push({
+        x: randomBetween(0, viewportWidth),
+        y: randomBetween(-viewportHeight, viewportHeight),
+        radius: randomBetween(1, 2.3),
+        speed: randomBetween(15, 34),
+        drift: randomBetween(-7, 7),
+        opacity: randomBetween(0.25, 0.65)
+      });
+    }
+    snowflakes.length = targetCount;
+  }
+
+  function drawSnowfall(timestamp) {
+    if (document.hidden) {
+      animationFrame = 0;
+      return;
+    }
+    if (timestamp - lastFrameTime < frameInterval) {
+      animationFrame = window.requestAnimationFrame(drawSnowfall);
+      return;
+    }
+    const deltaSeconds = Math.min((timestamp - (lastFrameTime || timestamp)) / 1000, 0.05);
+    lastFrameTime = timestamp;
+    snowContext.clearRect(0, 0, viewportWidth, viewportHeight);
+
+    for (const flake of snowflakes) {
+      flake.y += flake.speed * deltaSeconds;
+      flake.x += flake.drift * deltaSeconds;
+      if (flake.y > viewportHeight + 4) {
+        flake.y = -4;
+        flake.x = randomBetween(0, viewportWidth);
+      }
+      if (flake.x < -4) flake.x = viewportWidth + 4;
+      if (flake.x > viewportWidth + 4) flake.x = -4;
+      snowContext.beginPath();
+      snowContext.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+      snowContext.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+      snowContext.fill();
+    }
+    animationFrame = window.requestAnimationFrame(drawSnowfall);
+  }
+
+  function startSnowfall() {
+    if (!animationFrame) animationFrame = window.requestAnimationFrame(drawSnowfall);
+  }
+
+  window.addEventListener("resize", resizeSnowfall, { passive: true });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      animationFrame = 0;
+    } else {
+      lastFrameTime = 0;
+      startSnowfall();
+    }
+  });
+  resizeSnowfall();
+  startSnowfall();
+}
